@@ -1,0 +1,143 @@
+/* src/Pages/MouPage.css */
+
+/* General container settings */
+#mouPage {
+    margin-top: 100px;
+    padding: 20px 0;
+    background-color: #f8f9fa;
+  }
+  
+  /* Title styling */
+  #mouPage h2,
+  #mouPage h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  /* Section headers with specific colors */
+  #mouPage #mou-importance,
+  #mouPage #college-details {
+    color: #007bff;
+    margin-top: 50px;
+  }
+  
+  /* Styling for all cards */
+  #mouPage .card {
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 30px;
+  }
+  
+  #mouPage .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  #mouPage .card-body {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Icon styling inside the cards */
+  #mouPage .card-body .mb-3 {
+    margin-bottom: 20px;
+  }
+  
+  /* Button styling inside cards */
+  #mouPage .btn {
+    margin-top: 15px;
+    border-radius: 50px;
+    font-weight: 500;
+  }
+  
+  /* Card layout adjustments */
+  #mouPage .col-lg-4,
+  #mouPage .col-lg-6 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Styling for specific card categories */
+  #mouPage .card.border-primary {
+    border-color: #007bff;
+  }
+  
+  #mouPage .card.border-success {
+    border-color: #28a745;
+  }
+  
+  #mouPage .card.border-info {
+    border-color: #17a2b8;
+  }
+  
+  #mouPage .card.border-warning {
+    border-color: #ffc107;
+  }
+  
+  /* College section customization */
+  #mouPage #college-details .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  #mouPage #college-details .card-text {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Applying bounce-in animation to the cards */
+  #mouPage .card {
+    animation: bounceIn 1s ease-out;
+  }
+  
+  /* Card grid layout for mobile, tablet, and desktop */
+  @media (max-width: 768px) {
+    .mou-card-row {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .mou-card-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .mou-card-row .col-md-6 {
+      flex: 0 0 48%;
+    }
+  }
+  

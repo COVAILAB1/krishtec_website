@@ -1,0 +1,223 @@
+.navbar-nav.menu-items {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: -100%;
+  margin-top: -1px;
+}
+
+.right-icons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.iso-image {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.mail-icon-container,
+.profile-icon-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 100px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #007bff;
+}
+
+@media (max-width: 576px) {
+  .navbar-nav.menu-items {
+    justify-content: center;
+  }
+  .right-icons {
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+.navbar {
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Styling for navbar items */
+  .navbar .nav-link {
+    color: #bbb31a !important; /* Black color for text */
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect for navbar links */
+  .navbar .nav-link:hover {
+    color: #c4cad1 !important; /* Change to blue when hovered */
+  }
+  
+  /* Active state for navbar links */
+  .navbar .nav-link.active {
+    color: #0b0c0d !important;
+  }
+  
+  /* Dropdown menu styles */
+  .navbar .dropdown-menu {
+    background-color: #fff; /* White background for dropdown */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  /* Dropdown item styles */
+  .navbar .dropdown-item {
+    color: #000;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect for dropdown items */
+  .navbar .dropdown-item:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+    color: #007bff; /* Blue text when hovered */
+  }
+  
+  /* Active dropdown item */
+  .navbar .dropdown-item.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Navbar color change when scrolling */
+  .navbarBg {
+    background-color:rgb(255, 255, 255) !important; /* Blue background when scrolled */
+  }
+  
+  /* Mobile navbar (Hamburger menu) */
+  .navbar-toggler {
+    border-color: #007bff; /* Change hamburger border to blue */
+  }
+  
+  .navbar-toggler .icon-bar {
+    background-color: #007bff; /* Change icon color to blue */
+  }
+  
+  /* Hamburger animation */
+  .navbar-toggler.active .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translateY(6px);
+  }
+  
+  .navbar-toggler.active .icon-bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .navbar-toggler.active .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-6px);
+  }
+  
+  /* Style for brand logo */
+  .navbar-brand img {
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-brand img:hover {
+    transform: scale(1.1); /* Zoom in logo when hovered */
+  }
+  
+  /* Add some space around the navbar */
+  .navbar .ml-auto {
+    margin-left: auto;
+  }
+  
+  /* Add smooth scrolling when clicking menu items */
+  html {
+    scroll-behavior: smooth;
+  }
+  .container1{
+    position: relative;
+  }
+  /* Add this to your existing Menubar.css file */
+
+/* Nested dropdown styling */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+/* Make nested dropdown items look like regular menu items */
+.dropdown-submenu > .dropdown-toggle {
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  padding: 0.25rem 1.5rem !important;
+  text-align: left !important;
+  width: 100% !important;
+  font-weight: normal !important;
+}
+
+.dropdown-submenu > .dropdown-toggle:hover,
+.dropdown-submenu > .dropdown-toggle:focus {
+  background-color: #f8f9fa !important;
+  color: #16181b !important;
+  text-decoration: none;
+}
+
+.dropdown-submenu > .dropdown-toggle::after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #ccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+
+.dropdown-submenu:hover > .dropdown-toggle::after {
+  border-left-color: #999;
+}
+
+/* Responsive behavior for mobile */
+@media (max-width: 991.98px) {
+  .dropdown-submenu > .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: rgba(0,0,0,0.05);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .dropdown-submenu > .dropdown-toggle::after {
+    display: none;
+  }
+}
