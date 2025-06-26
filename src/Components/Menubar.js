@@ -19,6 +19,8 @@ export default function Menubar() {
   const [menucolor, setMenuColor] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
+  const [hoveredDropdown, setHoveredDropdown] = useState(null);
+
   const handleScroll = () => {
     if (window.scrollY > 50) {
       navbarScroll.current.classList.add("navbarBg");
@@ -34,8 +36,28 @@ export default function Menubar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleDropdownHover = (dropdownId, isEntering) => {
+    if (isEntering) {
+      setHoveredDropdown(dropdownId);
+    } else {
+      setHoveredDropdown(null);
+    }
+  };
+
   return (
     <Router basename="">
+      <style jsx>{`
+        /* Hide dropdown icons only for main menu items, not submenus */
+        .navbar-nav > .nav-item > .dropdown-toggle::after {
+          display: none !important;
+        }
+        
+        /* Keep submenu icons visible */
+        .dropdown-submenu .dropdown-toggle::after {
+          display: inline-block !important;
+        }
+      `}</style>
+      
       <Row className="no-gutters fixed-top" ref={navbarScroll}>
         <Container>
           <Row>
@@ -50,140 +72,157 @@ export default function Menubar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mx-auto menu-items">
                     <NavLink to="/" exact className="nav-link" onClick={() => setExpanded(false)}>Home</NavLink>
+                    
+                    {/* Industry Dropdown */}
                     <NavDropdown
-                      title="Services"
-                      id="services-dropdown"
-                      onMouseEnter={(e) => e.target.click()}
-                      onMouseLeave={(e) => e.target.blur()}
+                      title="For Industry"
+                      id="industry-dropdown"
+                      show={hoveredDropdown === 'industry'}
+                      onMouseEnter={() => handleDropdownHover('industry', true)}
+                      onMouseLeave={() => handleDropdownHover('industry', false)}
+                    >
+                      <NavDropdown.Item>
+                        Software Automation
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        Hardware Automation
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        Industrial Robotics
+                      </NavDropdown.Item>
+                      <NavDropdown
+                        title="Industrial IoT"
+                        id="industrial-iot-dropdown"
+                        drop="start"
+                        className="dropdown-submenu"
+                      >
+                        <NavDropdown
+                          title="Industrial IoT Gateways"
+                          id="iot-gateways-dropdown"
+                          drop="start"
+                          className="dropdown-submenu"
+                        >
+                          <NavDropdown.Item>
+                            MPC-311
+                          </NavDropdown.Item>
+                          <NavDropdown.Item>
+                            UCM-316
+                          </NavDropdown.Item>
+                          <NavDropdown.Item>
+                            MPC-730
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown.Item>
+                          IP65/IP68 Dataloggers
+                        </NavDropdown.Item>
+                        <NavDropdown
+                          title="Wireless Modbus Bridges"
+                          id="modbus-dropdown"
+                          drop="start"
+                          className="dropdown-submenu"
+                        >
+                          <NavDropdown.Item>
+                            DM-108
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown
+                          title="Data Acquisition Modules"
+                          id="data-acquisition-dropdown"
+                          drop="start"
+                          className="dropdown-submenu"
+                        >
+                          <NavDropdown.Item>
+                            AIM-8
+                          </NavDropdown.Item>
+                          <NavDropdown.Item>
+                            DIN-32
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown
+                          title="M-Bus Converters"
+                          id="mbus-converter-dropdown"
+                          drop="start"
+                          className="dropdown-submenu"
+                        >
+                          <NavDropdown.Item>
+                            RS485/RS232 to M-Bus Converter
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                      </NavDropdown>
+                      <NavDropdown.Item>
+                        ADAS
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        Precision Agriculture
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        Water Quality Management
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        Atal Kits
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        LoRa
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    {/* Academics Dropdown */}
+                    <NavDropdown
+                      title="For Academics"
+                      id="academics-dropdown"
+                      show={hoveredDropdown === 'academics'}
+                      onMouseEnter={() => handleDropdownHover('academics', true)}
+                      onMouseLeave={() => handleDropdownHover('academics', false)}
                     >
                       <NavDropdown
-                        title="For Industry"
-                        id="industry-dropdown"
-                        drop="start"
-                        className="dropdown-submenu"
-                      >
-                        <NavDropdown.Item>
-                          Software Automation
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          Hardware Automation
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          Industrial Robotics
-                        </NavDropdown.Item>
-                        <NavDropdown
-                          title="Industrial IoT"
-                          id="industrial-iot-dropdown"
-                          drop="start"
-                          className="dropdown-submenu"
-                        >
-                          <NavDropdown
-                            title="Industrial IoT Gateways"
-                            id="iot-gateways-dropdown"
-                            drop="start"
-                            className="dropdown-submenu"
-                          >
-                            <NavDropdown.Item>
-                              MPC-311
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                              UCM-316
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                              MPC-730
-                            </NavDropdown.Item>
-                          </NavDropdown>
-                          <NavDropdown.Item>
-                            IP65/IP68 Dataloggers
-                          </NavDropdown.Item>
-                          <NavDropdown
-                            title="Wireless Modbus Bridges"
-                            id="modbus-dropdown"
-                            drop="start"
-                            className="dropdown-submenu"
-                          >
-                            <NavDropdown.Item>
-                              DM-108
-                            </NavDropdown.Item>
-                          </NavDropdown>
-                          <NavDropdown
-                            title="Data Acquisition Modules"
-                            id="data-acquisition-dropdown"
-                            drop="start"
-                            className="dropdown-submenu"
-                          >
-                            <NavDropdown.Item>
-                              AIM-8
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                              DIN-32
-                            </NavDropdown.Item>
-                          </NavDropdown>
-                          <NavDropdown
-                            title="M-Bus Converters"
-                            id="mbus-converter-dropdown"
-                            drop="start"
-                            className="dropdown-submenu"
-                          >
-                            <NavDropdown.Item>
-                              RS485/RS232 to M-Bus Converter
-                            </NavDropdown.Item>
-                          </NavDropdown>
-                        </NavDropdown>
-                        <NavDropdown.Item>
-                          ADAS
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          Precision Agriculture
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          Water Quality Management
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          Atal Kits
-                        </NavDropdown.Item>
-                        <NavDropdown.Item>
-                          LoRa
-                        </NavDropdown.Item>
-                      </NavDropdown>
-                      <NavDropdown
-                        title="For Academics"
-                        id="academics-dropdown"
+                        title="L&D"
+                        id="ld-dropdown"
                         drop="start"
                         className="dropdown-submenu"
                       >
                         <NavDropdown
-                          title="L&D"
-                          id="ld-dropdown"
+                          title="Credit Course"
+                          id="credit-course-dropdown"
                           drop="start"
                           className="dropdown-submenu"
                         >
-                          <NavDropdown
-                            title="Credit Course"
-                            id="credit-course-dropdown"
-                            drop="start"
-                            className="dropdown-submenu"
-                          >
-                            <NavDropdown.Item as={NavLink} to="/credit-course-1" onClick={() => setExpanded(false)}>
-                              One Credit Course
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as={NavLink} to="/credit-course-3" onClick={() => setExpanded(false)}>
-                              Three Credit Course
-                            </NavDropdown.Item>
-                          </NavDropdown>
-                          <NavDropdown.Item as={NavLink} to="/Internship" onClick={() => setExpanded(false)}>
-                            Internship
+                          <NavDropdown.Item as={NavLink} to="/credit-course-1" onClick={() => setExpanded(false)}>
+                            One Credit Course
+                          </NavDropdown.Item>
+                          <NavDropdown.Item as={NavLink} to="/credit-course-3" onClick={() => setExpanded(false)}>
+                            Three Credit Course
                           </NavDropdown.Item>
                         </NavDropdown>
-                        <NavDropdown.Item>
-                          COE-IOT,AI SETUP
+                        <NavDropdown.Item as={NavLink} to="/Internship" onClick={() => setExpanded(false)}>
+                          Internship
                         </NavDropdown.Item>
-                     
                       </NavDropdown>
+                      <NavDropdown.Item>
+                        COE-IOT,AI SETUP
+                      </NavDropdown.Item>
                     </NavDropdown>
-                                        <NavLink to="/About" className="nav-link" onClick={() => setExpanded(false)}>About Us</NavLink>
 
-                    <NavLink to="/Contact" className="nav-link" onClick={() => setExpanded(false)}>Contact</NavLink>
+                    {/* Online Store Dropdown */}
+                    <NavDropdown
+                      title="Online Store"
+                      id="online-store-dropdown"
+                      show={hoveredDropdown === 'store'}
+                      onMouseEnter={() => handleDropdownHover('store', true)}
+                      onMouseLeave={() => handleDropdownHover('store', false)}
+                    >
+                      <NavDropdown.Item href="https://www.coimbatronics.in/" target="_blank" rel="noopener noreferrer">
+                        Coimbatronics
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="https://seller.indiamart.com/" target="_blank" rel="noopener noreferrer">
+                        India Mart
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="https://mti.tradeindia.com/my-tradeindia/index.html" target="_blank" rel="noopener noreferrer">
+                        TradeIndia
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    <NavLink to="/About" className="nav-link" onClick={() => setExpanded(false)}>About Us</NavLink>
+                    <NavLink to="/Contact" className="nav-link" onClick={() => setExpanded(false)}>Contact Us</NavLink>
                   </Nav>
                   <div className="right-icons d-flex align-items-center">
                     <img src={iso} alt="iso" className="d-none d-sm-block iso-image" />

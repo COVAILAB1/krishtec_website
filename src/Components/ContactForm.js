@@ -58,7 +58,6 @@ export default function ContactForm() {
         setLoading("");
         setSuccessMsg(true);
         setValidated(false);
-        alert(data); // You can remove this if you don't want the alert
       })
       .catch(error => {
         console.log(error);
