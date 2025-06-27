@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { Row, Container, Col } from "react-bootstrap";
 import WOW from "wowjs";
 import Slider from "../Components/Banner/Slider"; // Existing Slider
@@ -35,8 +36,6 @@ export default function Home() {
           </Container>
         </Row>
         <div className="bg-img">
-          {/* Falling Letter Animation */}
-          
           {/* New ImageSlider Component */}
           <Row className="no-gutters mt-md-5">
             <Container>
@@ -47,34 +46,23 @@ export default function Home() {
               </Row>
             </Container>
           </Row>
-          <div className="overlay-animation">
-            {"KRISHTEC".split("").map((letter, index) => (
-              <span
-                className="falling-letter"
-                style={{ animationDelay: `${index * 0.2}s` }}
-                key={index}
-              >
-                {letter}
-              </span>
-            ))}
+          
+          {/* Static KRISHTEC Text */}
+          <div className="static-krishtec">
+            <h1>Krishtec Offers Internship</h1>
           </div>
-
-          {/* Scrolling Text */}
-          <div className="scrolling-text">
-            <p>
-              For more details, visit{" "}
-              <a
-                href="https://www.coimbatronics.in"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                coimbatronics.in!!!!
-              </a>
-            </p>
-          </div>
-
         </div>
 
+              <div className="scrolling-text-container">
+          <div className="scrolling-text-content">
+            <p>
+              For more details,{" "}
+              <Link to="/internship" className="scrolling-link">
+                Click here!!
+              </Link>
+            </p>
+          </div>
+        </div>
         {/* Rest of your Home component layout */}
         <Row className="no-gutters mt-md-5">
           <Container className="mt-md-5">

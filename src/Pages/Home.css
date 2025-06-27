@@ -1,74 +1,106 @@
-/* Falling Letter Animation Container */
-.overlay-animation {
-    position: absolute;
-    top: 150px; /* Adjust this value to position above scrolling text */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    text-align: center;
-    z-index: 10;
-    pointer-events: none; /* Prevent interference with user interactions */
+/* Static KRISHTEC Text */
+.static-krishtec {
+  text-align: center;
+  position: relative;
+  right:298px;
+  margin: 50px 0;
+  padding: 20px;
+}
+
+.static-krishtec h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+/* Scrolling Text Container - Fixed position to override other components */
+.scrolling-text-container {
+  position: fixed;
+bottom: 78%;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 9999; /* High z-index to override other components */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.scrolling-text-content {
+  white-space: nowrap;
+  animation: scrollRightToLeft 15s linear infinite;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  width: max-content;
+}
+
+.scrolling-text-content:hover {
+  animation-play-state: paused;
+}
+
+.scrolling-text-content p {
+  margin: 0;
+  padding: 0 20px;
+  display: inline-block;
+}
+
+.scrolling-text-content a {
+  color: #df360c;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.scrolling-text-content a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Scrolling animation from right to left */
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Remove the gradient background animation - no longer needed */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .static-krishtec h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
   }
   
-  /* Individual letters */
-  .falling-letter {
-    display: inline-block;
-    font-size: 3rem;
-    font-weight: bold;
-    color: rgba(6, 170, 104, 0.729);
-    opacity: 0;
-    position: relative;
-    top:300px;
-    right: 300px;
-    animation: fall 1.5s ease-in-out forwards;
+  .scrolling-text-container {
+    height: 50px;
+    top: 45%;
   }
-    
-  .scrolling-text p {
-    display: inline-block;
+  
+  .scrolling-text-content {
     font-size: 1rem;
-    color: #ff0000; /* Highlight color for the effect */
-    font-weight: bold;
-    animation: fade-text 2s ease-in-out infinite; /* Smooth fade effect */
-    margin: 0;
   }
-  /* Falling animation */
-  @keyframes fall {
-    0% {
-      transform: translateY(-100px); /* Start above viewport */
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0); /* Final resting position */
-      opacity: 1;
-    }
+}
+
+@media (max-width: 480px) {
+  .static-krishtec h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
   }
   
-  /* Scrolling Text */
-  .scrolling-text {
-    position: relative;
-    margin-top: 140px;
-    right: 300px; /* Ensure spacing between animation and text */
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  .scrolling-text p {
-    display: inline-block;
-    font-size: 1rem;
-    color: #ff0000; /* Highlight color for the effect */
-    font-weight: bold;
-    animation: fade-text 2s ease-in-out infinite; /* Smooth fade effect */
-    margin: 0;
+  .scrolling-text-container {
+    height: 40px;
+    top: 40%;
   }
   
-  @keyframes fade-text {
-    0%, 100% {
-      opacity: 1; /* Fully visible */
-    }
-    50% {
-      opacity: 0; /* Fully hidden */
-    }
+  .scrolling-text-content {
+    font-size: 0.9rem;
   }
+}
